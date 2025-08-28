@@ -30,15 +30,16 @@
   let { exampleText = 'Copy me!', url, lang = "en" } = $props();
   let checked = $state(false);
   const handleSuccessfullyCopied = (e) => {
-    console.log(e)
     checked = true
     showToast = true;
     toastMessage = su[lang];
     toastType = 'success';
     setTimeout(() => {
-        checked = false;
         showToast = false;
     }, 3000)
+      setTimeout(() => {
+        checked = false;
+    }, 30000)
   }
 
   const handleFailedCopy = () => {
