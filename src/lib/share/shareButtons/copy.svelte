@@ -37,14 +37,6 @@
   const handleSuccessfullyCopied = () => {
     checked = true;
     error = false;
-    showToast = true;
-    toastMessage = su[lang];
-    toastType = 'success';
-    
-    setTimeout(() => {
-      showToast = false;
-    }, 3000);
-    
     setTimeout(() => {
       checked = false;
     }, 30000);
