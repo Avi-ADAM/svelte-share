@@ -144,10 +144,6 @@
                 <h4>svelte-share-buttons-component</h4>
                 <p>Our component is inspired by and based on <a href="https://github.com/pchynoweth/svelte-share-buttons-component" target="_blank" rel="noopener noreferrer">svelte-share-buttons-component</a> by Paul Chynoweth.</p>
             </div>
-            <div class="credit-item">
-                <h4>svelte-copy</h4>
-                <p>Copy to clipboard functionality is powered by <a href="https://github.com/ghostdevv/svelte-copy" target="_blank" rel="noopener noreferrer">svelte-copy</a>, a reliable and efficient clipboard management library.</p>
-            </div>
         </div>
     </section>
  

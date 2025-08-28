@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/%401lev1%2Fsvelte-share.svg)](https://www.npmjs.com/package/@1lev1/svelte-share)
 
-A versatile social sharing component for SvelteKit applications, with support for multiple platforms and languages. Based on and inspired by [svelte-share-buttons-component](https://github.com/pchynoweth/svelte-share-buttons-component). and using [svelte-copy](https://github.com/ghostdevv/svelte-copy)
+A versatile social sharing component for SvelteKit applications, with support for multiple platforms and languages. Based on and inspired by [svelte-share-buttons-component](https://github.com/pchynoweth/svelte-share-buttons-component)
 
 ## Features
 
