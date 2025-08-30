@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link href="./_app/immutable/assets/2.3WPAKTjQ.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.DRNKprj0.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CrTJmzoh.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/Oa2EQkx-.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BWcd6bm1.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/Cc5cyTxn.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BWoTSAiG.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.Ag8ao8cT.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/DsnmJJEf.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/8-Pd4fmt.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.BVgNuXVI.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.fB8DSWDC.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/C5TkAAyD.js">
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div><!--[--><!--[--><!----><!----><main class="container svelte-1u0bbhj"><h1 class="svelte-1u0bbhj">Svelte Share Demo</h1> <section class="demo-section svelte-1u0bbhj"><div class="content svelte-1u0bbhj"><h2 class="svelte-1u0bbhj">Features</h2> <ul class="svelte-1u0bbhj"><li class="svelte-1u0bbhj">✨ Multiple social platforms support</li> <li class="svelte-1u0bbhj">📱 Mobile-friendly design</li> <li class="svelte-1u0bbhj">🌐 Web Share API support</li> <li class="svelte-1u0bbhj">📋 Copy to clipboard functionality</li> <li class="svelte-1u0bbhj">🌍 Internationalization support</li> <li class="svelte-1u0bbhj">🎨 Customizable appearance</li></ul> <div class="share-container svelte-1u0bbhj"><h3 class="svelte-1u0bbhj">Try it out!</h3> <p class="svelte-1u0bbhj">Click the share button below to see it in action:</p> <aside class="container svelte-1vihoew"><div class="wrapper svelte-1vihoew"><div class="buttons svelte-1vihoew"><button class="svelte-1vihoew"><!--[--><span class="sr-only">Open Share manu</span> <svg viewBox="0 0 1024 1024" width="48" class="text svelte-md6y58"><path fill="currentColor" d="M864 704c-52.688 0-99.295 25.585-128.431 64.88l-421.36-214.72c3.664-13.455 5.792-27.535 5.792-42.16c0-18.303-3.216-35.807-8.88-52.175l423.76-205.616C763.97 294.016 810.897 320 864.001 320c88.367 0 160-71.649 160-160c0-88.368-71.633-160-160-160S704 71.633 704 160c0 12.431 1.567 24.464 4.24 36.08L278.4 404.657c-29.281-32.273-71.393-52.656-118.4-52.656C71.631 352 0 423.633 0 512c0 88.351 71.631 160 160 160c50.895 0 96.127-23.824 125.423-60.865l423.104 215.632C705.664 838.736 704 851.152 704 864c0 88.368 71.632 160 160 160s160-71.632 160-160s-71.632-160-160-160zm.002-639.999c53.008 0 96 42.992 96 96s-42.992 96-96 96s-96-42.992-96-96s42.992-96 96-96zm-704 544c-53.024 0-96-42.992-96-96s42.976-96 96-96c53.008 0 96 42.992 96 96s-42.992 96-96 96zm704 352c-53.008 0-96-42.992-96-96s42.992-96 96-96s96 42.992 96 96s-42.992 96-96 96z"></path></svg><!----><!--]--></button> <!--[!--><!--]--></div></div></aside><!----></div></div></section> <section class="code-section svelte-1u0bbhj"><h2 class="svelte-1u0bbhj">Implementation</h2> <p class="svelte-1u0bbhj">Add the share buttons to your SvelteKit project in three simple steps:</p> <div class="code-steps svelte-1u0bbhj"><div class="step svelte-1u0bbhj"><h4 class="svelte-1u0bbhj">1. Install the package</h4> <pre class="svelte-1u0bbhj"><code class="svelte-1u0bbhj">npm install @1lev1/svelte-share</code></pre></div> <div class="step svelte-1u0bbhj"><h4 class="svelte-1u0bbhj">2. Import the component</h4> <pre class="svelte-1u0bbhj"><code class="svelte-1u0bbhj">import { ShareButtons } from '@1lev1/svelte-share';</code></pre></div> <div class="step svelte-1u0bbhj"><h4 class="svelte-1u0bbhj">3. Use in your component</h4> <pre class="svelte-1u0bbhj"><code class="svelte-1u0bbhj">&lt;script>
+    const siteInfo = {
+        siteTitle: "Your Site Name",
+        siteUrl: "https://yoursite.com"
+    };
+
+    const shareConfig = {
+        slug: "page-slug",
+        title: "Your Page Title",
+        desc: "Page description",
+        hashtags: ["svelte", "webdev"],
+        via: "@TwitterHandle",
+        related: ["@sveltejs"],
+        quote: "Share quote",
+        lang: "en"  // or "he" for Hebrew
+    };
+&lt;/script>
+
+&lt;ShareButtons {...siteInfo} {...shareConfig} /></code></pre></div></div> <div class="api-docs svelte-1u0bbhj"><h3 class="svelte-1u0bbhj">Available Props</h3> <table class="svelte-1u0bbhj"><thead><tr><th class="svelte-1u0bbhj">Prop</th><th class="svelte-1u0bbhj">Type</th><th class="svelte-1u0bbhj">Description</th></tr></thead><tbody><tr><td class="svelte-1u0bbhj">siteTitle</td><td class="svelte-1u0bbhj">string</td><td class="svelte-1u0bbhj">Your website's name</td></tr><tr><td class="svelte-1u0bbhj">siteUrl</td><td class="svelte-1u0bbhj">string</td><td class="svelte-1u0bbhj">Your website's URL</td></tr><tr><td class="svelte-1u0bbhj">slug</td><td class="svelte-1u0bbhj">string</td><td class="svelte-1u0bbhj">Page path/slug</td></tr><tr><td class="svelte-1u0bbhj">title</td><td class="svelte-1u0bbhj">string</td><td class="svelte-1u0bbhj">Share title</td></tr><tr><td class="svelte-1u0bbhj">desc</td><td class="svelte-1u0bbhj">string</td><td class="svelte-1u0bbhj">Share description</td></tr><tr><td class="svelte-1u0bbhj">hashtags</td><td class="svelte-1u0bbhj">string[]</td><td class="svelte-1u0bbhj">Array of hashtags (without #)</td></tr><tr><td class="svelte-1u0bbhj">via</td><td class="svelte-1u0bbhj">string</td><td class="svelte-1u0bbhj">Twitter handle (with @)</td></tr><tr><td class="svelte-1u0bbhj">lang</td><td class="svelte-1u0bbhj">string</td><td class="svelte-1u0bbhj">"en" or "he"</td></tr></tbody></table></div></section> <section class="credits-section svelte-1u0bbhj"><h2 class="svelte-1u0bbhj">Credits</h2> <p class="svelte-1u0bbhj">This component is built with inspiration from and gratitude to:</p> <div class="credits-list svelte-1u0bbhj"><div class="credit-item svelte-1u0bbhj"><h4 class="svelte-1u0bbhj">svelte-share-buttons-component</h4> <p class="svelte-1u0bbhj">Our component is inspired by and based on <a href="https://github.com/pchynoweth/svelte-share-buttons-component" target="_blank" rel="noopener noreferrer" class="svelte-1u0bbhj">svelte-share-buttons-component</a> by Paul Chynoweth.</p></div></div></section></main> <footer class="footer svelte-1u0bbhj"><a class="hover:decoration-1 hover:underline svelte-1u0bbhj" href="https://www.1lev1.com/user/1" target="_blank" rel="noopener noreferrer">created by Baruch Babayof</a></footer><!----><!----><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_138u7lj = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						assets: "/svelte-share"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("./_app/immutable/entry/start.DRNKprj0.js"),
+						import("./_app/immutable/entry/app.Ag8ao8cT.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
