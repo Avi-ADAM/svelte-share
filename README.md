@@ -12,6 +12,9 @@ A versatile social sharing component for SvelteKit applications, with support fo
 - 📋 Copy to clipboard functionality
 - 🌍 Internationalization support (English and Hebrew)
 - 🎨 Customizable appearance
+## Demo 
+
+check out the [demo](https://avi-adam.github.io/svelte-share/) 
 
 ## Installation
 
