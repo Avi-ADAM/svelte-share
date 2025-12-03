@@ -1,7 +1,7 @@
 <script>
 	import TelegramIcon from '$lib/icons/telegram.svelte';
 
-	let { url, title } = $props();
+	let { url, title, size = 48 } = $props();
 
 
 	const baseUrl = 'https://telegram.me/share/url';
@@ -43,7 +43,8 @@
 
 <button onclick={handleClick}
 	><span class="sr-only">Share on Telegram</span><TelegramIcon
-		width={48}
+		width={size}
+		height={size}
 	/></button
 >
 

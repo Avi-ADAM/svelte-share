@@ -1,7 +1,7 @@
 <script>
 	import EmailIcon from '$lib/icons/Email.svelte';
 
-	let { title, body } = $props();
+	let { title, body, size = 48 } = $props();
 
 	const baseUrl = 'mailto:';
 	const parametersObject = {
@@ -20,7 +20,8 @@
 
 <a href="{urlWithParameters}"
 	><span class="sr-only">Share on Email</span><EmailIcon
-		width={48}
+		width={size}
+		height={size}
 	/></a
 >
 
@@ -30,11 +31,12 @@
 		background: transparent;
 		border-style: none;
 		transition: all 0.2s ease-in-out;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
 	}
-
-		a {
-			transition: all 2s ease-in-out;
-		}
 
 	a:focus,
 	a:hover {

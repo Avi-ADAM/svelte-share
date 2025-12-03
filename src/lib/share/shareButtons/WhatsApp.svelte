@@ -5,7 +5,7 @@
 
 	const WHATSAPP_GREEN = '#25D366';
 
-	let { url, title } = $props();
+	let { url, title, size = 48 } = $props();
 
 	const baseUrl =
 		browser && isMobileOrTablet()
@@ -49,7 +49,8 @@
 <button onclick={handleClick}
 	><span class="sr-only">Share on Whatsapp</span><WhatsappIcon
 		color={WHATSAPP_GREEN}
-		width={48}
+		width={size}
+		height={size}
 	/></button
 >
 

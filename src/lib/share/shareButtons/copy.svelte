@@ -23,10 +23,11 @@
    * @property {string} [exampleText]
    * @property {any} url
    * @property {string} [lang]
+   * @property {number} [size] - גודל האייקון בפיקסלים
    */
-  
+
   /** @type {Props} */
-  let { exampleText = 'Copy me!', url, lang = "en" } = $props();
+  let { exampleText = 'Copy me!', url, lang = "en", size = 48 } = $props();
   
   let showToast = $state(false);
   let toastMessage = $state('');
@@ -71,10 +72,11 @@
   {/if}
   
   <span class="sr-only">{coptTo[lang]}</span>
-  <Copy 
+  <Copy
     {checked}
     {error}
-    width={48}
+    width={size}
+    height={size}
   />
 </button>
 

@@ -9,6 +9,7 @@
 	 * @property {any} title - text in Tweet
 	 * @property {any} url
 	 * @property {string} [via] - include '@' e.g. '@askRodney'
+	 * @property {number} [size] - גודל האייקון בפיקסלים
 	 */
 
 	/** @type {Props} */
@@ -18,7 +19,8 @@
 		related = [],
 		title,
 		url,
-		via = ''
+		via = '',
+		size = 48
 	} = $props();
 
 	const TWITTER_BLUE = '#00aced';
@@ -67,7 +69,8 @@
 <button onclick={handleClick}
 	><span class="sr-only">Share on Twitter</span><TwitterIcon
 		colour={TWITTER_BLUE}
-		width={48}
+		width={size}
+		height={size}
 	/></button
 >
 

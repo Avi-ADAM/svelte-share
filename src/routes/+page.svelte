@@ -131,6 +131,11 @@
                         <td>string</td>
                         <td>"en" or "he"</td>
                     </tr>
+                    <tr>
+                        <td>size</td>
+                        <td>number</td>
+                        <td>Size of the buttons</td>
+                    </tr>
                 </tbody>
             </table>
         </div>

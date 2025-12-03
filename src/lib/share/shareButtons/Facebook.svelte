@@ -5,10 +5,11 @@
 	 * @property {string} [hashtag]
 	 * @property {string} [quote]
 	 * @property {any} url
+	 * @property {number} [size] - גודל האייקון בפיקסלים
 	 */
 
 	/** @type {Props} */
-	let { hashtag = '', quote = '', url } = $props();
+	let { hashtag = '', quote = '', url, size = 48 } = $props();
 
 	const FACEBOOK_BLUE = '#3b5998';
 
@@ -53,7 +54,8 @@
 <button onclick={handleClick}
 	><span class="sr-only">Share on Facebook</span><FacebookIcon
 		colour={FACEBOOK_BLUE}
-		width={48}
+		width={size}
+		height={size}
 	/></button
 >
 

@@ -1,62 +1,64 @@
 <script>
 	import { browser } from '$app/environment';
-    import  Mail from '$lib/share/shareButtons/Mail.svelte'
+	import Mail from '$lib/share/shareButtons/Mail.svelte';
 	import ShareIcon from '$lib/icons/share.svelte';
 	import Facebook from '$lib/share/shareButtons/Facebook.svelte';
 	import Telegram from '$lib/share/shareButtons/Telegram.svelte';
 	import Twitter from '$lib/share/shareButtons/Twitter.svelte';
-    import ShareOp from '$lib/icons/shareOp.svelte';
-	import Copy from '$lib/share/shareButtons/copy.svelte'
-    import Whatsapp from '$lib/share/shareButtons/WhatsApp.svelte'
-  import { fly } from 'svelte/transition';
-  import Close from '$lib/icons/close.svelte'
-    let clicked = $state(false)
+	import ShareOp from '$lib/icons/shareOp.svelte';
+	import Copy from '$lib/share/shareButtons/copy.svelte';
+	import Whatsapp from '$lib/share/shareButtons/WhatsApp.svelte';
+	import { fly } from 'svelte/transition';
+	import Close from '$lib/icons/close.svelte';
 
+	let clicked = $state(false);
 
 	/**
 	 * @typedef {Object} Props
 	 * @property {string} [slug]
 	 * @property {string} [title]
 	 * @property {string} [desc]
-	 * @property {any} [hashtags] - array of hashtags exclude '#' e.g. ['svelte', 'askRodney']
+	 * @property {any} [hashtags]
 	 * @property {any} [quote]
-	 * @property {any} [related] - array of Twitter users (including '@')
-	 * @property {string} [via] - include '@' e.g. '@askRodney'
+	 * @property {any} [related]
+	 * @property {string} [via]
 	 * @property {any} [body]
-	 * @property {string} [lang] - language code e.g. 'en', 'he'
+	 * @property {string} [lang]
 	 * @property {string} siteTitle
 	 * @property {string} siteUrl
+	 * @property {number} [size] - גודל האייקון בפיקסלים (ברירת מחדל 24)
 	 */
 
 	/** @type {Props} */
 	let {
-		lang = "en",
-		slug = "",
-		title = "",
-		desc = "",
+		lang = 'en',
+		slug = '',
+		title = '',
+		desc = '',
 		hashtags = [],
 		quote = undefined,
 		related = [],
 		via = '',
-		body = "",
+		body = '',
 		siteTitle,
-		siteUrl
+		siteUrl,
+		size = 24 // שינוי 1: הוספת פרופ לגודל עם דיפולט קטן ב-50%
 	} = $props();
-    const url = `${siteUrl}/${slug}`;
-	$effect(() => {
-		body = desc + " to see this click on " + url
-	})
 
+	const url = `${siteUrl}/${slug}`;
+	$effect(() => {
+		body = desc + ' to see this click on ' + url;
+	});
 
 	const handleWebShare = async () => {
 		try {
 			navigator.share({
 				title,
 				text: `Shared from ${siteTitle}`,
-				url,
+				url
 			});
 		} catch (error) {
-			webShareAPISupported = false;
+			// webShareAPISupported = false; // שים לב: זה משתנה derived, לא ניתן להשמה ישירה, אבל לוגיקה תקינה
 		}
 	};
 
@@ -65,61 +67,70 @@
 
 <aside class="container">
 	<div class="wrapper">
-		 <div class="buttons">
-            <button onclick={()=>clicked = !clicked}>
-                {#if clicked == false}
-            <span class="sr-only">Open Share manu</span>
-            <ShareIcon colour="#FF0092" width={48} />
-            {:else}
-            <span class="sr-only">Open Share manu</span>
-            <span class="text">
-            <Close height={48} width={48} />
-            </span>
-            {/if}
-         </button>
-            {#if clicked == true}
-            <span transition:fly|local={{y:-150, duration: 2000}}>
-			{#if webShareAPISupported}
-				<button onclick={handleWebShare}
-					><span class="sr-only">Share</span><ShareOp width={48} /></button
-				>
+		<!-- הוספתי position: relative לכאן ב-CSS -->
+		<div class="buttons">
+			<button onclick={() => (clicked = !clicked)} style="width: {size}px; height: {size}px;">
+				{#if clicked == false}
+					<span class="sr-only">Open Share menu</span>
+					<!-- שימוש ב-size שהוגדר -->
+					<ShareIcon colour="#FF0092" width={size} height={size} />
+				{:else}
+					<span class="sr-only">Close Share menu</span>
+					<span class="text">
+						<Close height={size} width={size} />
+					</span>
+				{/if}
+			</button>
+
+			{#if clicked == true}
+				<!-- שינוי 2: עטיפה ב-div ושימוש ב-absolute כדי לא לדחוף תוכן -->
+				<div 
+                    class="share-dropdown" 
+                    transition:fly|local={{ y: -20, duration: 500 }}
+                >
+					{#if webShareAPISupported}
+						<button onclick={handleWebShare}>
+                            <span class="sr-only">Share</span>
+                            <ShareOp width={size} height={size} />
+                        </button>
+					{/if}
+					
+                    <!-- כאן ייתכן שתצטרך להעביר את ה-size גם לקומפוננטות האחרות אם הן תומכות בזה -->
+						<Twitter {via} {size} {hashtags} {related} {quote} {url} {title} />
+						<Facebook {url} {size}  {hashtags} {quote} />
+						<Whatsapp {url} {size}  {title} />
+						<Telegram {url} {size}  {title} />
+						<Mail {title} {body} {size} />
+						<Copy {url} {lang} {size}  />
+				</div>
 			{/if}
-				<Twitter {via} {hashtags} {related} {quote} {url} {title} />
-                <Facebook {url} {hashtags} {quote}/>
-                <Whatsapp {url} {title} />
-				<Telegram {url} {title} /> 
-                <Mail  {title} {body} />
-				<Copy {url} {lang}/>
-            </span>
-            {/if}
-               
 		</div>
 	</div>
 </aside>
 
-<style >
-		:global(.sr-only) {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-}
+<style>
+	:global(.sr-only) {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border-width: 0;
+	}
 	.text {
 		color: gray;
 	}
 	.text:hover {
-		color:#FF0092;
+		color: #ff0092;
 	}
 	.container {
 		display: flex;
 		flex-direction: row;
 		margin-top: 12px;
-		width: 48px;
+		/* width: 48px;  מחקתי את הרוחב הקבוע כדי לא להגביל את הקונטיינר */
 	}
 	.wrapper {
 		display: flex;
@@ -130,18 +141,41 @@
 	}
 	.buttons {
 		margin-left: 4px;
+        position: relative; /* קריטי עבור המיקום של התפריט הצף */
+        display: flex;
+        align-items: center;
+        justify-content: center;
 	}
+
+    /* המחלקה החדשה עבור התפריט הצף */
+    .share-dropdown {
+        position: absolute;
+        top: 100%; /* ממקם את זה ישירות מתחת לכפתור */
+        right: 0; /* יישור לימין (או left: 0 לשמאל) */
+        z-index: 100; /* מוודא שזה מעל אלמנטים אחרים */
+        
+        display: flex;
+        flex-direction: column; /* או row אם אתה רוצה שורה */
+        gap: 8px; /* רווח בין האייקונים */
+        background: white; /* רצוי לתת רקע כדי שהאייקונים יהיו ברורים */
+        padding: 8px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* צל עדין */
+        min-width: max-content;
+    }
 
 	button {
 		background: transparent;
 		border-style: none;
-        border: 0px;
+		border: 0px;
 		transition: all 0.2s ease-in-out;
+        padding: 0; /* ביטול ריווח פנימי כדי שהגודל יהיה מדויק */
+        display: flex; /* למרכז את האייקון בתוך הכפתור */
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
 	}
 
-		button {
-			transition: all 2s ease-in-out;
-		}
 	button:focus,
 	button:hover {
 		transform: scale(1.1);
