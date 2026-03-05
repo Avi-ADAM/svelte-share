@@ -62,6 +62,8 @@ npm install @1lev1/svelte-share
 | lang | string | "en" or "he" |
 | quote | string | Share quote (optional) |
 | related | string[] | Related Twitter handles (optional) |
+| qrImageSize | number | QR image size in pixels (default: 320) |
+| buildQrUrl | (blockUrl: string, imageSize?: number) => string | Optional QR URL builder override |
 
 ## Supported Platforms
 
@@ -72,7 +74,28 @@ npm install @1lev1/svelte-share
 - Telegram
 - Email
 - Copy to clipboard
+- QR code (full-screen modal)
 
+
+### QR customization (optional)
+
+```svelte
+<script>
+    import { ShareButtons } from '@1lev1/svelte-share';
+
+    function buildQrUrl(blockUrl, imageSize = 320) {
+        return `https://api.qrserver.com/v1/create-qr-code/?size=${imageSize}x${imageSize}&data=${encodeURIComponent(blockUrl)}`;
+    }
+</script>
+
+<ShareButtons
+    siteTitle="Your Site Name"
+    siteUrl="https://yoursite.com"
+    slug="page-slug"
+    buildQrUrl={buildQrUrl}
+    qrImageSize={320}
+/>
+```
 ## Credits
 
 This component is based on [svelte-share-buttons-component](https://github.com/pchynoweth/svelte-share-buttons-component) by Paul Chynoweth, with additional features and modifications.
@@ -80,3 +103,8 @@ This component is based on [svelte-share-buttons-component](https://github.com/p
 ## License
 
 1lev1
+
+
+
+
+
