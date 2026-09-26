@@ -63,6 +63,8 @@ npm install @1lev1/svelte-share
 | quote | string | Share quote (optional) |
 | related | string[] | Related Twitter handles (optional) |
 | qrImageSize | number | QR image size in pixels (default: 320) |
+| colour | string | Colour of the share / close icon (default: grey) |
+| hoverColour | string | Hover colour of that icon (default: #FF0092) |
 | buildQrUrl | (blockUrl: string, imageSize?: number) => string | Optional QR URL builder override |
 
 ## Supported Platforms

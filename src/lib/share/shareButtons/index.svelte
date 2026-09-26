@@ -28,6 +28,8 @@
 	 * @property {string} siteTitle
 	 * @property {string} siteUrl
 	 * @property {number} [size]
+	 * @property {string} [colour] Colour of the share / close icon (default: grey)
+	 * @property {string} [hoverColour] Its hover colour (default: #FF0092)
 	 * @property {number} [qrImageSize]
 	 * @property {(blockUrl: string, imageSize?: number) => string} [buildQrUrl]
 	 */
@@ -46,6 +48,8 @@
 		siteTitle,
 		siteUrl,
 		size = 24,
+		colour = 'grey',
+		hoverColour = '#FF0092',
 		qrImageSize = 320,
 		buildQrUrl = undefined
 	} = $props();
@@ -71,13 +75,13 @@
 	let webShareAPISupported = $derived(browser && typeof navigator.share !== 'undefined');
 </script>
 
-<aside class="container">
+<aside class="container" style="--share-colour: {colour}; --share-hover-colour: {hoverColour};">
 	<div class="wrapper">
 		<div class="buttons">
 			<button onclick={() => (clicked = !clicked)} style="width: {size}px; height: {size}px;">
 				{#if clicked == false}
 					<span class="sr-only">Open Share menu</span>
-					<ShareIcon colour="#FF0092" width={size} height={size} />
+					<ShareIcon {colour} {hoverColour} width={size} height={size} />
 				{:else}
 					<span class="sr-only">Close Share menu</span>
 					<span class="text">
@@ -122,11 +126,11 @@
 	}
 
 	.text {
-		color: gray;
+		color: var(--share-colour);
 	}
 
 	.text:hover {
-		color: #ff0092;
+		color: var(--share-hover-colour);
 	}
 
 	.container {
